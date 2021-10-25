@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipChildren="false"
+    android:clipToPadding="false"
+    android:padding="8dp"
+    tools:context=".MainActivity"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/btn_write"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_margin="8dp"
+        android:text="글 쓰기" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_margin="8dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="5dp"
+        app:cardPreventCornerOverlap="false"
+        app:contentPadding="0dp">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/iv_cardimage"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHeight_percent="0.5"
+                app:layout_constraintHorizontal_bias="0.05"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.15"
+                tools:src="@drawable/ic_launcher_background" />
+
+            <TextView
+                android:id="@+id/tv_title_label"
+                style="@style/tv_label"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.05"
+                app:layout_constraintStart_toEndOf="@+id/iv_cardimage"
+                app:layout_constraintTop_toTopOf="@+id/iv_cardimage"
+                app:layout_constraintVertical_bias="0.0"
+                tools:text="제목" />
+
+            <TextView
+                android:id="@+id/et_title"
+                android:layout_width="0dp"
+                style="@style/tv_label"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:text="TextView"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_title_label"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/tv_title_label"
+                app:layout_constraintTop_toTopOf="@+id/tv_title_label" />
+
+            <TextView
+                android:id="@+id/tv_content_label"
+                style="@style/tv_label"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.05"
+                app:layout_constraintStart_toEndOf="@+id/iv_cardimage"
+                app:layout_constraintTop_toBottomOf="@+id/tv_title_label"
+                app:layout_constraintVertical_bias="0.05"
+                tools:text="내용" />
+
+            <TextView
+                android:id="@+id/et_content"
+                style="@style/tv_label"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:text="TextView"
+                app:layout_constraintBottom_toBottomOf="@+id/iv_cardimage"
+                app:layout_constraintEnd_toEndOf="@+id/et_title"
+                app:layout_constraintStart_toStartOf="@+id/et_title"
+                app:layout_constraintTop_toTopOf="@+id/tv_content_label" />
+
+            <TextView
+                android:id="@+id/tv_conditions_label"
+                style="@style/tv_label"
+                tools:text="조 건"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/iv_cardimage"
+                app:layout_constraintTop_toBottomOf="@+id/iv_cardimage"
+                app:layout_constraintVertical_bias="0.1" />
+
+            <ListView
+                android:id="@+id/lv_conditions"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/et_content"
+                app:layout_constraintStart_toStartOf="@+id/tv_conditions_label"
+                app:layout_constraintTop_toBottomOf="@+id/tv_conditions_label" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>
