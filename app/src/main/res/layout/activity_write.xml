@@ -30,9 +30,9 @@
         tools:text="제목" />
 
     <TextView
-        android:id="@+id/tv_content_label"
+        android:id="@+id/tv_location_label"
         style="@style/tv_label_size20"
-        android:text="내용"
+        android:text="@string/location"
         android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/tv_title_label"
@@ -41,37 +41,103 @@
         app:layout_constraintVertical_bias="0.02" />
 
     <EditText
-        android:id="@+id/et_content"
-        tools:text="내용"
+        android:id="@+id/et_location"
         style="@style/et_size0"
-        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/et_title"
-        app:layout_constraintHeight_percent="0.2"
         app:layout_constraintStart_toStartOf="@+id/et_title"
-        app:layout_constraintTop_toTopOf="@+id/tv_content_label"
+        app:layout_constraintTop_toTopOf="@+id/tv_location_label"
+        app:layout_constraintVertical_bias="0.0"
+        tools:text="위치" />
+
+    <TextView
+        android:id="@+id/tv_deposit_rent"
+        style="@style/tv_label_size20"
+        android:layout_marginStart="10dp"
+        android:text="@string/deposit"
+        app:layout_constraintBottom_toBottomOf="@+id/chk_type_month"
+        app:layout_constraintEnd_toEndOf="@+id/et_location"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/chk_type_month"
+        app:layout_constraintTop_toTopOf="@+id/chk_type_month" />
+
+    <CheckBox
+        android:id="@+id/chk_type_month"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="월세"
+        app:layout_constraintBottom_toBottomOf="@+id/chk_type"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/chk_type"
+        app:layout_constraintTop_toTopOf="@+id/chk_type"
         app:layout_constraintVertical_bias="0.0" />
+
+    <CheckBox
+        android:id="@+id/chk_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="전세"
+        android:checked="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/tv_location_label"
+        app:layout_constraintTop_toBottomOf="@+id/et_location"
+        app:layout_constraintVertical_bias="0.02" />
+
+    <EditText
+        android:id="@+id/et_month"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="20"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_month_label"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/tv_month_label"
+        app:layout_constraintTop_toTopOf="@+id/tv_month_label"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <EditText
+        android:id="@+id/et_deposit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="1000"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_deposit_rent"
+        app:layout_constraintStart_toEndOf="@+id/tv_deposit_rent"
+        app:layout_constraintTop_toTopOf="@+id/tv_deposit_rent"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <TextView
+        android:id="@+id/tv_month_label"
+        style="@style/tv_label_size20"
+        android:text="@string/month"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/et_deposit"
+        app:layout_constraintStart_toEndOf="@+id/et_deposit"
+        app:layout_constraintTop_toTopOf="@+id/et_deposit" />
 
     <TextView
         android:id="@+id/tv_condition_label"
         style="@style/tv_label_size20"
         android:text="조건"
         android:textColor="#000000"
+
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/tv_content_label"
-        app:layout_constraintStart_toStartOf="@+id/tv_content_label"
-        app:layout_constraintTop_toBottomOf="@+id/et_content"
+        app:layout_constraintEnd_toEndOf="@+id/chk_type"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/chk_type"
+        app:layout_constraintTop_toBottomOf="@+id/chk_type"
         app:layout_constraintVertical_bias="0.07999998" />
 
     <TextView
         android:id="@+id/tv_image_label"
         style="@style/tv_label_size20"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:text="사진"
         android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/tv_content_label"
+        app:layout_constraintEnd_toEndOf="@+id/tv_location_label"
         app:layout_constraintStart_toStartOf="@+id/tv_condition_label"
         app:layout_constraintTop_toBottomOf="@+id/tv_condition_mbti_label"
         app:layout_constraintVertical_bias="0.05" />
@@ -85,7 +151,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/tv_condition_label"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/et_content"
+        app:layout_constraintStart_toStartOf="@+id/et_location"
         app:layout_constraintTop_toTopOf="@+id/tv_condition_label" />
 
     <EditText
@@ -280,5 +346,28 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iv_image2" />
+
+    <TextView
+        android:id="@+id/tv_link_label"
+        style="@style/tv_label_size20"
+        android:textColor="#000000"
+        android:text="바로가기"
+        app:layout_constraintBottom_toTopOf="@+id/btn_condition_register"
+        app:layout_constraintStart_toStartOf="@+id/tv_image_label"
+        app:layout_constraintTop_toBottomOf="@+id/iv_image1" />
+
+    <EditText
+        android:id="@+id/et_link"
+        style="@style/et_size0"
+        android:layout_marginStart="10dp"
+        android:hint="직방이나 다방 어플을 통한 바로가기 링크가 있으시면 입력해주세요."
+        android:inputType="textPersonName"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_condition_register"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.13"
+        app:layout_constraintStart_toEndOf="@+id/tv_link_label"
+        app:layout_constraintTop_toBottomOf="@+id/iv_image2"
+        tools:ignore="TouchTargetSizeCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

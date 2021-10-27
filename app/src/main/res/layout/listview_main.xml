@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_margin="8dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="5dp"
+        app:cardPreventCornerOverlap="false"
+        app:contentPadding="0dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/iv_cardImage"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHeight_percent="0.5"
+                app:layout_constraintHorizontal_bias="0.05"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.15"
+                tools:src="@drawable/ic_launcher_background" />
+
+            <TextView
+                android:id="@+id/tv_title_label"
+                style="@style/tv_label"
+                android:text="제목"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.05"
+                app:layout_constraintStart_toEndOf="@+id/iv_cardImage"
+                app:layout_constraintTop_toTopOf="@+id/iv_cardImage"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/tv_title"
+                style="@style/tv_label"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_title_label"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/tv_title_label"
+                app:layout_constraintTop_toTopOf="@+id/tv_title_label"
+                tools:text="TextView" />
+
+            <TextView
+                android:id="@+id/tv_location_label"
+                style="@style/tv_label"
+                android:text="@string/location"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.05"
+                app:layout_constraintStart_toEndOf="@+id/iv_cardImage"
+                app:layout_constraintTop_toBottomOf="@+id/tv_title_label"
+                app:layout_constraintVertical_bias="0.05" />
+
+            <TextView
+                android:id="@+id/tv_location"
+                style="@style/tv_label"
+                android:layout_marginStart="10dp"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_location_label"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/tv_location_label"
+                app:layout_constraintTop_toTopOf="@+id/tv_location_label"
+                tools:text="TextView" />
+
+            <TextView
+                android:id="@+id/tv_conditions_label"
+                style="@style/tv_label"
+                android:text="조 건"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/iv_cardImage"
+                app:layout_constraintTop_toBottomOf="@+id/iv_cardImage"
+                app:layout_constraintVertical_bias="0.1" />
+
+            <TextView
+                android:id="@+id/tv_condition_age_label"
+                style="@style/tv_SizeWrap"
+                android:text="@string/age"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/tv_conditions_label"
+                app:layout_constraintTop_toBottomOf="@+id/tv_conditions_label"
+                app:layout_constraintVertical_bias="0.1" />
+
+            <TextView
+                android:id="@+id/tv_condition_age"
+                style="@style/tv_condition"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_condition_age_label"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.03"
+                app:layout_constraintStart_toEndOf="@+id/tv_condition_age_label"
+                app:layout_constraintTop_toTopOf="@+id/tv_condition_age_label"
+                app:layout_constraintVertical_bias="0.80"
+                tools:text="TextView" />
+
+            <TextView
+                android:id="@+id/tv_condition_gender_label"
+                style="@style/tv_SizeWrap"
+                android:text="@string/gender"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/tv_condition_age_label"
+                app:layout_constraintStart_toStartOf="@+id/tv_condition_age_label"
+                app:layout_constraintTop_toBottomOf="@+id/tv_condition_age_label" />
+
+            <TextView
+                android:id="@+id/tv_condition_gender"
+                style="@style/tv_condition"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_condition_gender_label"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.03"
+                app:layout_constraintStart_toEndOf="@+id/tv_condition_gender_label"
+                app:layout_constraintTop_toTopOf="@+id/tv_condition_gender_label"
+                tools:text="TextView" />
+
+            <TextView
+                android:id="@+id/tv_condition_eatingHabits_label"
+                style="@style/tv_SizeWrap"
+                android:text="@string/eatingHabits"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_condition_age"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.03"
+                app:layout_constraintStart_toEndOf="@+id/tv_condition_age"
+                app:layout_constraintTop_toTopOf="@+id/tv_condition_age"
+                app:layout_constraintVertical_bias="0.1" />
+
+            <TextView
+                android:id="@+id/tv_condition_eatingHabits"
+                style="@style/tv_condition"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_condition_eatingHabits_label"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.03"
+                app:layout_constraintStart_toEndOf="@+id/tv_condition_eatingHabits_label"
+                app:layout_constraintTop_toTopOf="@+id/tv_condition_eatingHabits_label"
+                tools:text="TextView" />
+
+            <TextView
+                android:id="@+id/tv_condition_lifePattern_label"
+                style="@style/tv_SizeWrap"
+                android:text="@string/lifePattern"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_condition_gender"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.03"
+                app:layout_constraintStart_toEndOf="@+id/tv_condition_gender"
+                app:layout_constraintTop_toTopOf="@+id/tv_condition_gender"
+                app:layout_constraintVertical_bias="0.1" />
+
+            <TextView
+                android:id="@+id/tv_condition_lifePattern"
+                style="@style/tv_condition"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_condition_lifePattern_label"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.03"
+                app:layout_constraintStart_toEndOf="@+id/tv_condition_lifePattern_label"
+                app:layout_constraintTop_toTopOf="@+id/tv_condition_lifePattern_label"
+                tools:text="TextView" />
+
+            <TextView
+                android:id="@+id/tv_condition_mbti_label"
+                style="@style/tv_SizeWrap"
+                android:text="@string/mbti"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_condition_eatingHabits"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.03"
+                app:layout_constraintStart_toEndOf="@+id/tv_condition_eatingHabits"
+                app:layout_constraintTop_toTopOf="@+id/tv_condition_eatingHabits"
+                app:layout_constraintVertical_bias="0.1" />
+
+            <TextView
+                android:id="@+id/tv_condition_mbti"
+                style="@style/tv_condition"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_condition_mbti_label"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.08"
+                app:layout_constraintStart_toEndOf="@+id/tv_condition_mbti_label"
+                app:layout_constraintTop_toTopOf="@+id/tv_condition_mbti_label"
+                tools:text="TextView" />
+
+            <TextView
+                android:id="@+id/tv_type"
+                style="@style/tv_label"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/tv_location_label"
+                app:layout_constraintStart_toStartOf="@+id/tv_location_label"
+                app:layout_constraintTop_toBottomOf="@+id/tv_location_label"
+                app:layout_constraintVertical_bias="0.05"
+                tools:text="@string/month" />
+
+            <TextView
+                android:id="@+id/tv_deposit_label"
+                style="@style/tv_label"
+                android:text="@string/deposit"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_type"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/tv_location"
+                app:layout_constraintTop_toTopOf="@+id/tv_type" />
+
+            <TextView
+                android:id="@+id/tv_month_label"
+                style="@style/tv_label"
+                android:visibility="invisible"
+                android:layout_marginStart="10dp"
+                android:text="@string/month"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_deposit"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/tv_deposit"
+                app:layout_constraintTop_toTopOf="@+id/tv_deposit" />
+
+            <TextView
+                android:id="@+id/tv_deposit"
+                style="@style/tv_SizeWrap"
+                android:layout_marginStart="10dp"
+                tools:text="@string/money"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_deposit_label"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/tv_deposit_label"
+                app:layout_constraintTop_toTopOf="@+id/tv_deposit_label" />
+
+            <TextView
+                android:id="@+id/tv_month"
+                style="@style/tv_SizeWrap"
+                android:visibility="invisible"
+                android:layout_marginStart="10dp"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_month_label"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/tv_month_label"
+                app:layout_constraintTop_toTopOf="@+id/tv_month_label"
+                app:layout_constraintVertical_bias="0.0"
+                tools:text="@string/money" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</LinearLayout>
