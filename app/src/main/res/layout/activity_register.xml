@@ -6,196 +6,200 @@
     android:layout_height="match_parent"
     tools:context=".RegisterActivity">
 
-    <TextView
-        android:id="@+id/tv_id"
-        style="@style/tv_SizeWrap"
-        android:text="@string/id"
-        app:layout_constraintBottom_toBottomOf="@+id/et_id"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/et_id" />
+    <FrameLayout
+        android:id="@+id/register_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+<!--    <TextView-->
+<!--        android:id="@+id/tv_id"-->
+<!--        style="@style/tv_SizeWrap"-->
+<!--        android:text="@string/id"-->
+<!--        app:layout_constraintBottom_toBottomOf="@+id/et_id"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.2"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/et_id" />-->
 
-    <EditText
-        android:id="@+id/et_id"
-        style="@style/SizeWrap"
-        android:ems="10"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.3"
-        app:layout_constraintStart_toEndOf="@+id/tv_id"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.05" />
+<!--    <EditText-->
+<!--        android:id="@+id/et_id"-->
+<!--        style="@style/SizeWrap"-->
+<!--        android:ems="10"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.3"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/tv_id"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintVertical_bias="0.05" />-->
 
-    <TextView
-        android:id="@+id/tv_pwd"
-        style="@style/tv_SizeWrap"
-        android:text="@string/password"
-        app:layout_constraintBottom_toBottomOf="@+id/et_pwd"
-        app:layout_constraintEnd_toEndOf="@+id/tv_id"
-        app:layout_constraintHorizontal_bias="0.2"
-        app:layout_constraintStart_toStartOf="@+id/tv_id"
-        app:layout_constraintTop_toTopOf="@+id/et_pwd"
-        app:layout_constraintVertical_bias="0.5" />
+<!--    <TextView-->
+<!--        android:id="@+id/tv_pwd"-->
+<!--        style="@style/tv_SizeWrap"-->
+<!--        android:text="@string/password"-->
+<!--        app:layout_constraintBottom_toBottomOf="@+id/et_pwd"-->
+<!--        app:layout_constraintEnd_toEndOf="@+id/tv_id"-->
+<!--        app:layout_constraintHorizontal_bias="0.2"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/tv_id"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/et_pwd"-->
+<!--        app:layout_constraintVertical_bias="0.5" />-->
 
-    <EditText
-        android:id="@+id/et_pwd"
-        style="@style/SizeWrap"
-        android:ems="10"
-        android:inputType="textPassword"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/et_id"
-        app:layout_constraintStart_toStartOf="@+id/et_id"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.15"/>
+<!--    <EditText-->
+<!--        android:id="@+id/et_pwd"-->
+<!--        style="@style/SizeWrap"-->
+<!--        android:ems="10"-->
+<!--        android:inputType="textPassword"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="@+id/et_id"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/et_id"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintVertical_bias="0.15"/>-->
 
-    <TextView
-        android:id="@+id/tv_name"
-        style="@style/tv_SizeWrap"
-        android:text="@string/name"
-        app:layout_constraintBottom_toBottomOf="@+id/et_name"
-        app:layout_constraintEnd_toEndOf="@+id/tv_pwd"
-        app:layout_constraintStart_toStartOf="@+id/tv_pwd"
-        app:layout_constraintTop_toTopOf="@+id/et_name" />
+<!--    <TextView-->
+<!--        android:id="@+id/tv_name"-->
+<!--        style="@style/tv_SizeWrap"-->
+<!--        android:text="@string/name"-->
+<!--        app:layout_constraintBottom_toBottomOf="@+id/et_name"-->
+<!--        app:layout_constraintEnd_toEndOf="@+id/tv_pwd"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/tv_pwd"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/et_name" />-->
 
-    <EditText
-        android:id="@+id/et_name"
-        style="@style/SizeWrap"
-        android:ems="10"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/et_pwd"
-        app:layout_constraintStart_toStartOf="@+id/et_pwd"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.25"/>
+<!--    <EditText-->
+<!--        android:id="@+id/et_name"-->
+<!--        style="@style/SizeWrap"-->
+<!--        android:ems="10"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="@+id/et_pwd"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/et_pwd"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintVertical_bias="0.25"/>-->
 
-    <TextView
-        android:id="@+id/tv_age"
-        style="@style/tv_SizeWrap"
-        android:text="@string/birth"
-        app:layout_constraintBottom_toBottomOf="@+id/btn_age"
-        app:layout_constraintEnd_toEndOf="@+id/tv_name"
-        app:layout_constraintStart_toStartOf="@+id/tv_name"
-        app:layout_constraintTop_toTopOf="@+id/btn_age" />
+<!--    <TextView-->
+<!--        android:id="@+id/tv_age"-->
+<!--        style="@style/tv_SizeWrap"-->
+<!--        android:text="@string/birth"-->
+<!--        app:layout_constraintBottom_toBottomOf="@+id/btn_age"-->
+<!--        app:layout_constraintEnd_toEndOf="@+id/tv_name"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/tv_name"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/btn_age" />-->
 
-    <Button
-        android:id="@+id/btn_age"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="@string/default_birth"
-        style="@style/Widget.MaterialComponents.Button.TextButton"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/et_name"
-        app:layout_constraintStart_toStartOf="@+id/et_name"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.35"/>
+<!--    <Button-->
+<!--        android:id="@+id/btn_age"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="@string/default_birth"-->
+<!--        style="@style/Widget.MaterialComponents.Button.TextButton"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="@+id/et_name"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/et_name"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintVertical_bias="0.35"/>-->
 
 
-    <TextView
-        android:id="@+id/tv_gender"
-        style="@style/tv_SizeWrap"
-        android:text="@string/gender"
-        app:layout_constraintBottom_toBottomOf="@+id/rg_gender"
-        app:layout_constraintEnd_toEndOf="@+id/tv_age"
-        app:layout_constraintStart_toStartOf="@+id/tv_age"
-        app:layout_constraintTop_toTopOf="@+id/rg_gender" />
+<!--    <TextView-->
+<!--        android:id="@+id/tv_gender"-->
+<!--        style="@style/tv_SizeWrap"-->
+<!--        android:text="@string/gender"-->
+<!--        app:layout_constraintBottom_toBottomOf="@+id/rg_gender"-->
+<!--        app:layout_constraintEnd_toEndOf="@+id/tv_age"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/tv_age"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/rg_gender" />-->
 
-    <RadioGroup
-        android:id="@+id/rg_gender"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/btn_age"
-        app:layout_constraintStart_toStartOf="@+id/btn_age"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.45"
-        android:weightSum="2">
+<!--    <RadioGroup-->
+<!--        android:id="@+id/rg_gender"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="horizontal"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="@+id/btn_age"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/btn_age"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintVertical_bias="0.45"-->
+<!--        android:weightSum="2">-->
 
-        <RadioButton
-            android:id="@+id/rb_male"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/male"
-            android:layout_weight="1"/>
+<!--        <RadioButton-->
+<!--            android:id="@+id/rb_male"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="@string/male"-->
+<!--            android:layout_weight="1"/>-->
 
-        <RadioButton
-            android:id="@+id/rb_female"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/female"
-            android:layout_weight="1"/>
+<!--        <RadioButton-->
+<!--            android:id="@+id/rb_female"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="@string/female"-->
+<!--            android:layout_weight="1"/>-->
 
-    </RadioGroup>
+<!--    </RadioGroup>-->
 
-    <Spinner
-        android:id="@+id/sp_eatingHabits"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/rg_gender"
-        app:layout_constraintStart_toStartOf="@+id/rg_gender"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.55"/>
+<!--    <Spinner-->
+<!--        android:id="@+id/sp_eatingHabits"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="@+id/rg_gender"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/rg_gender"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintVertical_bias="0.55"/>-->
 
-    <TextView
-        android:id="@+id/tv_eatingHabits"
-        style="@style/tv_SizeWrap"
-        android:layout_weight="1"
-        android:text="@string/eatingHabits"
-        app:layout_constraintBottom_toBottomOf="@+id/sp_eatingHabits"
-        app:layout_constraintEnd_toEndOf="@+id/tv_gender"
-        app:layout_constraintStart_toStartOf="@+id/tv_gender"
-        app:layout_constraintTop_toTopOf="@+id/sp_eatingHabits" />
+<!--    <TextView-->
+<!--        android:id="@+id/tv_eatingHabits"-->
+<!--        style="@style/tv_SizeWrap"-->
+<!--        android:layout_weight="1"-->
+<!--        android:text="@string/eatingHabits"-->
+<!--        app:layout_constraintBottom_toBottomOf="@+id/sp_eatingHabits"-->
+<!--        app:layout_constraintEnd_toEndOf="@+id/tv_gender"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/tv_gender"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/sp_eatingHabits" />-->
 
-    <Spinner
-        android:id="@+id/sp_lifePattern"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/sp_eatingHabits"
-        app:layout_constraintStart_toStartOf="@+id/sp_eatingHabits"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.65"/>
+<!--    <Spinner-->
+<!--        android:id="@+id/sp_lifePattern"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="@+id/sp_eatingHabits"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/sp_eatingHabits"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintVertical_bias="0.65"/>-->
 
-    <TextView
-        android:id="@+id/tv_lifePattern"
-        style="@style/tv_SizeWrap"
-        android:layout_weight="1"
-        android:text="@string/lifePattern"
-        app:layout_constraintBottom_toBottomOf="@+id/sp_lifePattern"
-        app:layout_constraintEnd_toEndOf="@+id/tv_eatingHabits"
-        app:layout_constraintStart_toStartOf="@+id/tv_eatingHabits"
-        app:layout_constraintTop_toTopOf="@+id/sp_lifePattern" />
+<!--    <TextView-->
+<!--        android:id="@+id/tv_lifePattern"-->
+<!--        style="@style/tv_SizeWrap"-->
+<!--        android:layout_weight="1"-->
+<!--        android:text="@string/lifePattern"-->
+<!--        app:layout_constraintBottom_toBottomOf="@+id/sp_lifePattern"-->
+<!--        app:layout_constraintEnd_toEndOf="@+id/tv_eatingHabits"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/tv_eatingHabits"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/sp_lifePattern" />-->
 
-    <Spinner
-        android:id="@+id/sp_mbti"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/sp_lifePattern"
-        app:layout_constraintStart_toStartOf="@+id/sp_lifePattern"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.75" />
+<!--    <Spinner-->
+<!--        android:id="@+id/sp_mbti"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="@+id/sp_lifePattern"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/sp_lifePattern"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintVertical_bias="0.75" />-->
 
-    <TextView
-        android:id="@+id/tv_mbti"
-        style="@style/tv_SizeWrap"
-        android:layout_weight="1"
-        android:text="@string/mbti"
-        app:layout_constraintBottom_toBottomOf="@+id/sp_mbti"
-        app:layout_constraintEnd_toEndOf="@+id/tv_lifePattern"
-        app:layout_constraintStart_toStartOf="@+id/tv_lifePattern"
-        app:layout_constraintTop_toTopOf="@+id/sp_mbti" />
+<!--    <TextView-->
+<!--        android:id="@+id/tv_mbti"-->
+<!--        style="@style/tv_SizeWrap"-->
+<!--        android:layout_weight="1"-->
+<!--        android:text="@string/mbti"-->
+<!--        app:layout_constraintBottom_toBottomOf="@+id/sp_mbti"-->
+<!--        app:layout_constraintEnd_toEndOf="@+id/tv_lifePattern"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/tv_lifePattern"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/sp_mbti" />-->
 
-    <Button
-        android:id="@+id/btn_register"
-        style="@style/SizeWrap"
-        android:text="@string/register"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_pwd"
-        app:layout_constraintVertical_bias="0.9" />
+<!--    <Button-->
+<!--        android:id="@+id/btn_register"-->
+<!--        style="@style/SizeWrap"-->
+<!--        android:text="@string/register"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/et_pwd"-->
+<!--        app:layout_constraintVertical_bias="0.9" />-->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

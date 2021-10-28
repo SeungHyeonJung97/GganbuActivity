@@ -215,7 +215,7 @@ public class WriteActivity extends AppCompatActivity {
         post.setDeposit(mBinding.etDeposit.getText().toString());
         post.setAge_start(mBinding.etConditionAgeStart.getText().toString());
         post.setAge_end(mBinding.etConditionAgeEnd.getText().toString());
-        post.setGender(mBinding.rbMale.isChecked() ? "남자" : "여자");
+        post.setGender(mBinding.chkMale.isChecked() ? "남자" : "여자");
         post.setEatingHabits(mBinding.spConditionEatingHabits.getSelectedItem().toString());
         post.setLifePattern(mBinding.spConditionLifePattern.getSelectedItem().toString());
         post.setMbti(mBinding.spConditionMbti.getSelectedItem().toString());

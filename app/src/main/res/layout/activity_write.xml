@@ -212,7 +212,7 @@
         app:layout_constraintTop_toTopOf="@+id/tv_condition_gender_label">
 
         <RadioButton
-            android:id="@+id/rb_male"
+            android:id="@+id/chk_male"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -220,7 +220,7 @@
             tools:ignore="TouchTargetSizeCheck" />
 
         <RadioButton
-            android:id="@+id/rb_female"
+            android:id="@+id/chk_female"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"

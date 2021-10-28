@@ -1,14 +1,30 @@
 package com.example.gganbuactivity;
 
-public class User {
+public class RegisterSingleton {
     private String email;
     private String password;
     private String nickname;
-    private String birth;
+    private String birthday;
     private String gender;
     private String eatingHabits;
     private String lifePattern;
     private String mbti;
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
     public String getNickname() {
         return nickname;
@@ -18,12 +34,12 @@ public class User {
         this.nickname = nickname;
     }
 
-    public String getBirth() {
-        return birth;
+    public String getBirthday() {
+        return birthday;
     }
 
-    public void setBirth(String birth) {
-        this.birth = birth;
+    public void setBirthday(String birthday) {
+        this.birthday = birthday;
     }
 
     public String getGender() {
@@ -57,28 +73,12 @@ public class User {
     public void setMbti(String mbti) {
         this.mbti = mbti;
     }
+    private static RegisterSingleton instance = null;
 
-    public User() {
-    }
-
-    public User(String id, String password) {
-        this.email = id;
-        this.password = password;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
+    public static RegisterSingleton getInstance(){
+        if(instance == null){
+            instance = new RegisterSingleton();
+        }
+        return instance;
     }
 }
