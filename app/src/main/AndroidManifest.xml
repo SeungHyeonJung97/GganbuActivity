@@ -3,7 +3,7 @@
     package="com.example.gganbuactivity">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -12,6 +12,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.GganbuActivity">
+        <activity
+            android:name=".zipcode.ZipcodeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".zipcode.WebViewActivity"
+            android:exported="false" />
         <activity
             android:name=".WriteActivity"
             android:exported="false" />
@@ -26,9 +32,12 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:exported="false"></activity>
+            android:exported="false" />
         <activity
             android:name=".RegisterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ChatActivity"
             android:exported="false" />
     </application>
 

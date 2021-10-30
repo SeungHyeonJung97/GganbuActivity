@@ -3,10 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/shqhk/AndroidStudioProjects/GganbuActivity/app/src/main/res/layout/activity_chat.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/shqhk/AndroidStudioProjects/GganbuActivity/app/src/main/res/layout/activity_login.xml" value="0.2046875" />
         <entry key="..\:/Users/shqhk/AndroidStudioProjects/GganbuActivity/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/shqhk/AndroidStudioProjects/GganbuActivity/app/src/main/res/layout/activity_register.xml" value="0.2046875" />
+        <entry key="..\:/Users/shqhk/AndroidStudioProjects/GganbuActivity/app/src/main/res/layout/activity_web_view.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/shqhk/AndroidStudioProjects/GganbuActivity/app/src/main/res/layout/activity_write.xml" value="0.33" />
+        <entry key="..\:/Users/shqhk/AndroidStudioProjects/GganbuActivity/app/src/main/res/layout/activity_zipcode.xml" value="0.3515625" />
         <entry key="..\:/Users/shqhk/AndroidStudioProjects/GganbuActivity/app/src/main/res/layout/custom_spinner_item.xml" value="0.2046875" />
         <entry key="..\:/Users/shqhk/AndroidStudioProjects/GganbuActivity/app/src/main/res/layout/fragment_birthday.xml" value="0.33" />
         <entry key="..\:/Users/shqhk/AndroidStudioProjects/GganbuActivity/app/src/main/res/layout/fragment_eatinghabits.xml" value="0.2046875" />

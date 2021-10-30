@@ -23,9 +23,13 @@ import android.widget.ArrayAdapter;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.gganbuactivity.databinding.ActivityWriteBinding;
+import com.example.gganbuactivity.zipcode.NetworkStatus;
+import com.example.gganbuactivity.zipcode.WebViewActivity;
+import com.example.gganbuactivity.zipcode.ZipcodeActivity;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
@@ -55,6 +59,7 @@ public class WriteActivity extends AppCompatActivity {
     private String image_path[] = new String[]{"", "", ""};
     private Post post;
     private DatabaseReference mDatabaseRef = FirebaseDatabase.getInstance().getReference();
+    private static final int SEARCH_ADDRESS_ACTIVITY = 10000; // 주소 요청코드 상수 requestCode
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,7 +76,33 @@ public class WriteActivity extends AppCompatActivity {
 
         chkListener();
 
-        for (int i = 0; i < iv.length; i++) {
+        // 터치 안되게 막기
+        mBinding.etLocation.setFocusable(false);
+        mBinding.etLocation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.i("주소설정페이지", "주소입력창 클릭");
+                int status = NetworkStatus.getConnectivityStatus(getApplicationContext());
+                if (status == NetworkStatus.TYPE_MOBILE || status == NetworkStatus.TYPE_WIFI) {
+
+                    Log.i("주소설정페이지", "주소입력창 클릭");
+                    Intent i = new Intent(getApplicationContext(), WebViewActivity.class);
+                    // 화면전환 애니메이션 없애기
+                    overridePendingTransition(0, 0);
+                    // 주소결과
+                    startActivityForResult(i, SEARCH_ADDRESS_ACTIVITY);
+
+                } else {
+                    Toast.makeText(getApplicationContext(), "인터넷 연결을 확인해주세요.", Toast.LENGTH_SHORT).show();
+                }
+
+
+            }
+        });
+
+        for (
+                int i = 0;
+                i < iv.length; i++) {
             iv[i].setOnClickListener(new OnClickListenerPutIndex(i) {
                 @Override
                 public void onClick(View view) {
@@ -224,21 +255,35 @@ public class WriteActivity extends AppCompatActivity {
      * 저장소에서 이미지를 불러와, imageview에 연결해주고 image에대한 절대 경로를 저장한다.
      */
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        if (requestCode == OPEN_GALLERY && resultCode == RESULT_OK) {
-            try {
-                InputStream in = getContentResolver().openInputStream(data.getData());
-                // Bitmap img = BitmapFactory.decodeStream(in);
-                image_path[image_index] = getFullPathFromUri(this, data.getData());
-                Log.d(TAG, "" + image_path[image_index]);
-                in.close();
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent intent) {
+        switch (requestCode) {
+            case OPEN_GALLERY:
+                if (resultCode == RESULT_OK) {
+                    try {
+                        InputStream in = getContentResolver().openInputStream(intent.getData());
+                        // Bitmap img = BitmapFactory.decodeStream(in);
+                        image_path[image_index] = getFullPathFromUri(this, intent.getData());
+                        Log.d(TAG, "" + image_path[image_index]);
+                        in.close();
 
-                iv[image_index].setImageURI(Uri.parse(image_path[image_index]));
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+                        iv[image_index].setImageURI(Uri.parse(image_path[image_index]));
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+                break;
+            case SEARCH_ADDRESS_ACTIVITY:
+                if (resultCode == RESULT_OK) {
+                    String data = intent.getExtras().getString("data");
+                    if (data != null) {
+                        Log.i("test", "data:" + data);
+                        mBinding.etLocation.setText(data);
+                    }
+                }
+                break;
         }
-        super.onActivityResult(requestCode, resultCode, data);
+
+        super.onActivityResult(requestCode, resultCode, intent);
     }
 
     public static String getFullPathFromUri(Context context, Uri fileUri) {
@@ -283,6 +328,7 @@ public class WriteActivity extends AppCompatActivity {
         public OnClickListenerPutIndex(int index) {
             this.index = index;
         }
+
     }
 
     public void setSpinner(Spinner spinner, int array) {
