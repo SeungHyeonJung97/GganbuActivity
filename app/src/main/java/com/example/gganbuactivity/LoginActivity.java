@@ -45,7 +45,7 @@ public class LoginActivity extends AppCompatActivity {
         mBinding.btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String id = mBinding.etId.getText().toString();
+                String email = mBinding.etId.getText().toString();
                 String password = mBinding.etPwd.getText().toString();
 
                 mDatabaseRef.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -55,11 +55,12 @@ public class LoginActivity extends AppCompatActivity {
 
                         while (child.hasNext()) {
                             DataSnapshot current_user = child.next();
-                            if (current_user.getKey().equals(id) &&
+                            if (current_user.getKey().equals(email) &&
                                     current_user.child("password").getValue().toString().equals(password)) {
                                 Toast.makeText(LoginActivity.this, "로그인 성공 !", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                                intent.putExtra("id", id);
+                                RegisterSingleton.getInstance().setNickname(current_user.child("nickname").getValue().toString());
+                                RegisterSingleton.getInstance().setIdToken(current_user.hashCode());
                                 startActivity(intent);
                                 finish();
                                 return;

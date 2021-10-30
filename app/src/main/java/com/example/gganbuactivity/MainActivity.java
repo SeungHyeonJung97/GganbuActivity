@@ -23,7 +23,6 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding mBinding;
-    private String current_user_id;
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
@@ -39,7 +38,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(view);
 
         Intent intent = getIntent();
-        current_user_id = intent.getStringExtra("id");
 
         recyclerView = mBinding.mainRecyclerView;
         recyclerView.setHasFixedSize(true);
@@ -49,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
 
         mDatabase = FirebaseDatabase.getInstance();
         mDatabaseRef = mDatabase.getReference("Post");
+
         mDatabaseRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -72,7 +71,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, WriteActivity.class);
-                intent.putExtra("id",current_user_id);
                 startActivity(intent);
             }
         });

@@ -9,6 +9,15 @@ public class RegisterSingleton {
     private String eatingHabits;
     private String lifePattern;
     private String mbti;
+    private int idToken;
+
+    public int getIdToken() {
+        return idToken;
+    }
+
+    public void setIdToken(int idToken) {
+        this.idToken = idToken;
+    }
 
     public String getEmail() {
         return email;

@@ -1,16 +1,23 @@
 package com.example.gganbuactivity;
 
 import android.content.Context;
+import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
@@ -18,6 +25,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
 
     private ArrayList<Post> arrayList;
     private Context context;
+    private DatabaseReference mDateRef = FirebaseDatabase.getInstance().getReference();
 
     public CustomAdapter(ArrayList<Post> arrayList, Context context) {
         this.arrayList = arrayList;
@@ -40,7 +48,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
                 .into(holder.iv_cardImage);
         holder.tv_title.setText(arrayList.get(position).getTitle());
         holder.tv_location.setText(arrayList.get(position).getLocation());
-        if(arrayList.get(position).getType().equals("월세")){
+        if (arrayList.get(position).getType().equals("월세")) {
             holder.tv_type.setText("월세");
             holder.tv_month_label.setVisibility(View.VISIBLE);
             holder.tv_month.setVisibility(View.VISIBLE);
@@ -55,15 +63,44 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
         holder.tv_condition_mbti.setText(arrayList.get(position).getMbti());
 
 
+        try {
+            if (arrayList.get(position).getNickname().equals(RegisterSingleton.getInstance().getNickname())) {
+                holder.iv_delete.setVisibility(View.VISIBLE);
+                holder.iv_delete.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        mDateRef.child("Post").child("" + RegisterSingleton.getInstance().getNickname()).removeValue(new DatabaseReference.CompletionListener() {
+                            @Override
+                            public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
+                                Toast.makeText(view.getContext(), "게시글이 삭제되었습니다.", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }
+                });
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(holder.iv_delete.getVisibility() == View.INVISIBLE){
+                    Toast.makeText(view.getContext(), "이 유저랑 깐부를 맺으시겠습니까 ? ", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
+
 
     @Override
     public int getItemCount() {
         return (arrayList != null ? arrayList.size() : 0);
     }
 
-    public class CustomViewHolder extends RecyclerView.ViewHolder{
+    public class CustomViewHolder extends RecyclerView.ViewHolder {
         ImageView iv_cardImage;
+        ImageView iv_delete;
         TextView tv_title;
         TextView tv_location;
         TextView tv_type;
@@ -90,6 +127,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
             this.tv_condition_eatingHabits = itemView.findViewById(R.id.tv_condition_eatingHabits);
             this.tv_condition_lifePattern = itemView.findViewById(R.id.tv_condition_lifePattern);
             this.tv_condition_mbti = itemView.findViewById(R.id.tv_condition_mbti);
+            this.iv_delete = itemView.findViewById(R.id.iv_delete);
 
         }
     }

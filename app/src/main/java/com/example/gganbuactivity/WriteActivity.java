@@ -52,9 +52,9 @@ public class WriteActivity extends AppCompatActivity {
     private ImageView iv[];
     private final int OPEN_GALLERY = 1;
     private int image_index = 0;
-    private String image_path[] = new String[]{"","",""};
+    private String image_path[] = new String[]{"", "", ""};
     private Post post;
-    private String current_user_id;
+    private DatabaseReference mDatabaseRef = FirebaseDatabase.getInstance().getReference();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,9 +62,6 @@ public class WriteActivity extends AppCompatActivity {
         mBinding = ActivityWriteBinding.inflate(getLayoutInflater());
         View view = mBinding.getRoot();
         setContentView(view);
-
-        Intent intent = getIntent();
-        current_user_id = intent.getStringExtra("id");
 
         iv = new ImageView[]{mBinding.ivImage1, mBinding.ivImage2, mBinding.ivImage3};
 
@@ -134,7 +131,7 @@ public class WriteActivity extends AppCompatActivity {
         mBinding.chkType.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if(compoundButton.isChecked()){
+                if (compoundButton.isChecked()) {
                     mBinding.chkTypeMonth.setChecked(false);
                     mBinding.tvMonthLabel.setVisibility(View.INVISIBLE);
                     mBinding.etMonth.setVisibility(View.INVISIBLE);
@@ -153,14 +150,14 @@ public class WriteActivity extends AppCompatActivity {
          * image_path에 담긴 image를 FirebaseStorage에 업로드한다.
          */
         for (int i = 0; i < image_path.length; i++) {
-            Log.d(TAG,""+ image_path[i]);
+            Log.d(TAG, "" + image_path[i]);
             if (!(image_path[i].equals(""))) {
                 String filename = image_path[i] + i + ".jpg";
-                Log.d(TAG,filename);
+                Log.d(TAG, filename);
                 Uri file = Uri.fromFile(new File(image_path[i]));
-                StorageReference reference = storageReference.child("images/"+file.getLastPathSegment());
+                StorageReference reference = storageReference.child("images/" + file.getLastPathSegment());
                 uploadTask = reference.putFile(file);
-            }else{
+            } else {
                 continue;
             }
             uploadTask.addOnFailureListener(new OnFailureListener() {
@@ -189,11 +186,10 @@ public class WriteActivity extends AppCompatActivity {
     }
 
     private void uploadPost() {
-        DatabaseReference mDatabaseRef = FirebaseDatabase.getInstance().getReference();
         mDatabaseRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                 mDatabaseRef.child("Post").child(current_user_id).setValue(post);
+                mDatabaseRef.child("Post").child("" + RegisterSingleton.getInstance().getNickname()).setValue(post);
             }
 
             @Override
@@ -206,9 +202,9 @@ public class WriteActivity extends AppCompatActivity {
     private void setPost(Post post, Uri url) {
         post.setTitle(mBinding.etTitle.getText().toString());
         post.setLocation(mBinding.etLocation.getText().toString());
-        if(mBinding.chkType.isChecked()){
+        if (mBinding.chkType.isChecked()) {
             post.setType("전세");
-        }else{
+        } else {
             post.setType("월세");
             post.setMonth(mBinding.etMonth.getText().toString());
         }
@@ -220,6 +216,7 @@ public class WriteActivity extends AppCompatActivity {
         post.setLifePattern(mBinding.spConditionLifePattern.getSelectedItem().toString());
         post.setMbti(mBinding.spConditionMbti.getSelectedItem().toString());
         post.setLink(mBinding.etLink.getText().toString());
+        post.setNickname(RegisterSingleton.getInstance().getNickname());
         post.setUrl(url.toString());
     }
 
@@ -231,7 +228,7 @@ public class WriteActivity extends AppCompatActivity {
         if (requestCode == OPEN_GALLERY && resultCode == RESULT_OK) {
             try {
                 InputStream in = getContentResolver().openInputStream(data.getData());
-                Bitmap img = BitmapFactory.decodeStream(in);
+                // Bitmap img = BitmapFactory.decodeStream(in);
                 image_path[image_index] = getFullPathFromUri(this, data.getData());
                 Log.d(TAG, "" + image_path[image_index]);
                 in.close();
@@ -252,7 +249,7 @@ public class WriteActivity extends AppCompatActivity {
             cursor.moveToFirst();
             String document_id = cursor.getString(0);
             if (document_id == null) {
-                for (int i=0; i < cursor.getColumnCount(); i++) {
+                for (int i = 0; i < cursor.getColumnCount(); i++) {
                     if (column.equalsIgnoreCase(cursor.getColumnName(i))) {
                         fullPath = cursor.getString(i);
                         break;

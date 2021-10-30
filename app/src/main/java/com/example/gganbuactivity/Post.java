@@ -14,6 +14,15 @@ public class Post {
     private String mbti;
     private String idToken;
     private String url;
+    private String nickname;
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
 
     public String getLocation() {
         return location;
