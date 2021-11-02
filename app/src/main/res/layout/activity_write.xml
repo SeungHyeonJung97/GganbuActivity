@@ -139,8 +139,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/tv_location_label"
         app:layout_constraintStart_toStartOf="@+id/tv_condition_label"
-        app:layout_constraintTop_toBottomOf="@+id/tv_condition_mbti_label"
-        app:layout_constraintVertical_bias="0.05" />
+        app:layout_constraintTop_toBottomOf="@+id/textView21"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/tv_condition_age_label"
@@ -303,11 +303,11 @@
         android:src="@drawable/ic_action_add"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintWidth_percent="0.25"
+        app:layout_constraintHorizontal_bias="0.007"
         app:layout_constraintStart_toStartOf="@+id/tv_condition_mbti_label"
         app:layout_constraintTop_toTopOf="@+id/tv_image_label"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintWidth_percent="0.25" />
 
     <ImageView
         android:id="@+id/iv_image2"
@@ -342,19 +342,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="등록"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_image2" />
+        app:layout_constraintEnd_toEndOf="@+id/et_link"
+        app:layout_constraintStart_toStartOf="@+id/tv_link_label"
+        app:layout_constraintTop_toBottomOf="@+id/et_link" />
 
     <TextView
         android:id="@+id/tv_link_label"
         style="@style/tv_label_size20"
-        android:textColor="#000000"
         android:text="바로가기"
-        app:layout_constraintBottom_toTopOf="@+id/btn_condition_register"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/tv_image_label"
-        app:layout_constraintTop_toBottomOf="@+id/iv_image1" />
+        app:layout_constraintTop_toBottomOf="@+id/iv_image1"
+        app:layout_constraintVertical_bias="0.1" />
 
     <EditText
         android:id="@+id/et_link"
@@ -363,11 +363,33 @@
         android:hint="직방이나 다방 어플을 통한 바로가기 링크가 있으시면 입력해주세요."
         android:inputType="textPersonName"
         android:textSize="10sp"
-        app:layout_constraintBottom_toTopOf="@+id/btn_condition_register"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_link_label"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.13"
         app:layout_constraintStart_toEndOf="@+id/tv_link_label"
-        app:layout_constraintTop_toBottomOf="@+id/iv_image2"
+        app:layout_constraintTop_toTopOf="@+id/tv_link_label"
         tools:ignore="TouchTargetSizeCheck" />
+
+    <ProgressBar
+        android:id="@+id/progress"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:visibility="invisible"/>
+
+    <TextView
+        android:id="@+id/textView21"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="10sp"
+        android:layout_marginTop="10dp"
+        android:text="대표 이미지를 등록해주세요 !"
+        app:layout_constraintEnd_toEndOf="@+id/iv_image1"
+        app:layout_constraintStart_toStartOf="@+id/iv_image1"
+        app:layout_constraintTop_toBottomOf="@+id/tv_condition_mbti_label" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -20,16 +20,17 @@
 
             <ImageView
                 android:id="@+id/iv_cardImage"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="0dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHeight_percent="0.5"
+                app:layout_constraintWidth_percent="0.3"
                 app:layout_constraintHorizontal_bias="0.05"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.15"
-                tools:src="@drawable/ic_launcher_background" />
+                android:src="@drawable/favorite"/>
 
             <TextView
                 android:id="@+id/tv_title_label"
@@ -223,7 +224,7 @@
                 android:id="@+id/tv_deposit"
                 style="@style/tv_SizeWrap"
                 android:layout_marginStart="10dp"
-                tools:text="@string/money"
+                tools:text="200만원"
                 app:layout_constraintBottom_toBottomOf="@+id/tv_deposit_label"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -241,18 +242,17 @@
                 app:layout_constraintStart_toEndOf="@+id/tv_month_label"
                 app:layout_constraintTop_toTopOf="@+id/tv_month_label"
                 app:layout_constraintVertical_bias="0.0"
-                tools:text="@string/money" />
+                tools:text="200만원" />
 
             <ImageView
-                android:id="@+id/iv_delete"
+                android:id="@+id/iv_favorite"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:layout_marginEnd="5dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_baseline_clear_24"
-                android:visibility="invisible"/>
+                app:srcCompat="@drawable/ic_baseline_star_outline_24" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>

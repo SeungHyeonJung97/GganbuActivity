@@ -85,7 +85,7 @@
         android:id="@+id/tv_link"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="혹시 MBTI를 모르시나요 ? 여기를 클릭하셔서 바로 확인해보세요 !"
+        android:text="혹시 MBTI를 모르시나요 ? 여기를 클릭하셔서\n바로 확인해보세요 !"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/sp_mbti"
         app:layout_constraintHorizontal_bias="0.0"

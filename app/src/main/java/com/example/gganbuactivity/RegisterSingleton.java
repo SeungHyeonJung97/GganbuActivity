@@ -9,14 +9,45 @@ public class RegisterSingleton {
     private String eatingHabits;
     private String lifePattern;
     private String mbti;
-    private int idToken;
+    private String profileImage;
+    private String location;
+    private String comment;
+    private String recommend;
 
-    public int getIdToken() {
-        return idToken;
+    public String getRecommend() {
+        return recommend;
     }
 
-    public void setIdToken(int idToken) {
-        this.idToken = idToken;
+    public void setRecommend(String recommend) {
+        this.recommend = recommend;
+    }
+
+    public static void setInstance(RegisterSingleton instance) {
+        RegisterSingleton.instance = instance;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
+    public String getProfileImage() {
+        return profileImage;
+    }
+
+    public void setProfileImage(String profileImage) {
+        this.profileImage = profileImage;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
     }
 
     public String getEmail() {

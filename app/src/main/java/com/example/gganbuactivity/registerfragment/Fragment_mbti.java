@@ -50,8 +50,8 @@ public class Fragment_mbti extends Fragment {
                 String mbti = mBinding.spMbti.getSelectedItem().toString();
                 RegisterSingleton.getInstance().setMbti(mbti);
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                Fragment_finish fragment_finish = new Fragment_finish();
-                transaction.replace(R.id.register_layout, fragment_finish);
+                Fragment_comment fragment_comment = new Fragment_comment();
+                transaction.replace(R.id.register_layout, fragment_comment);
                 transaction.commit();
             }
         });

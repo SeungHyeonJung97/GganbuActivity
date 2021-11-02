@@ -9,14 +9,6 @@
     tools:context=".MainActivity"
     android:orientation="vertical">
 
-    <Button
-        android:id="@+id/btn_write"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="right"
-        android:layout_margin="8dp"
-        android:text="글 쓰기" />
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/main_recyclerView"
         android:layout_width="match_parent"

@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_write"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/borderline"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/cl_match"
+        app:layout_constraintHeight_percent="0.25"
+        app:layout_constraintStart_toStartOf="@+id/cl_match"
+        app:layout_constraintTop_toBottomOf="@+id/cl_match"
+        app:layout_constraintVertical_bias="0.079"
+        app:layout_constraintWidth_percent="0.45">
+
+        <ImageView
+            android:id="@+id/imageView7"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.5"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.9"
+            app:layout_constraintWidth_percent="0.5"
+            app:srcCompat="@drawable/post" />
+
+        <TextView
+            android:id="@+id/textView19"
+            style="@style/tv_label_size20"
+            android:layout_width="0dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:fontFamily="@font/nanumbarungothicbold"
+            android:text="글 쓰기"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.08" />
+
+        <TextView
+            android:id="@+id/textView20"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="깐부님과 깐부가 될 사람을\n직접 모집해보세요 !"
+            app:layout_constraintStart_toStartOf="@+id/textView19"
+            app:layout_constraintTop_toBottomOf="@+id/textView19" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_favorite"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/borderline"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.25"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/cl_browse"
+        app:layout_constraintTop_toBottomOf="@+id/cl_browse"
+        app:layout_constraintVertical_bias="0.07999998"
+        app:layout_constraintWidth_percent="0.45">
+
+        <ImageView
+            android:id="@+id/imageView6"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.5"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.9"
+            app:layout_constraintWidth_percent="0.5"
+            app:srcCompat="@drawable/favorite" />
+
+        <TextView
+            android:id="@+id/textView17"
+            style="@style/tv_label_size20"
+            android:layout_width="0dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:fontFamily="@font/nanumbarungothicbold"
+            android:text="즐겨찾기"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.08" />
+
+        <TextView
+            android:id="@+id/textView18"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="깐부님이 저장한 즐겨찾기를\n 확인해보세요 !"
+            app:layout_constraintStart_toStartOf="@+id/textView17"
+            app:layout_constraintTop_toBottomOf="@+id/textView17" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/nanumbarungothiclight"
+        android:text="원하시는 메뉴를 선택해주세요 !"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.1" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_match"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/borderline"
+        app:layout_constraintBottom_toBottomOf="@+id/cl_browse"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.25"
+        app:layout_constraintStart_toEndOf="@+id/cl_browse"
+        app:layout_constraintTop_toTopOf="@+id/cl_browse"
+        app:layout_constraintWidth_percent="0.45">
+
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.5"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.9"
+            app:layout_constraintWidth_percent="0.5"
+            app:srcCompat="@drawable/automatch" />
+
+        <TextView
+            android:id="@+id/textView13"
+            style="@style/tv_label_size20"
+            android:layout_width="0dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:fontFamily="@font/nanumbarungothicbold"
+            android:text="깐부 자동 매칭하기"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.08" />
+
+        <TextView
+            android:id="@+id/textView14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="깐부님이 원하는 조건의\n깐부를 찾아드려요 !"
+            app:layout_constraintStart_toStartOf="@+id/textView13"
+            app:layout_constraintTop_toBottomOf="@+id/textView13" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_browse"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/borderline"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.25"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textView10"
+        app:layout_constraintTop_toBottomOf="@+id/textView10"
+        app:layout_constraintVertical_bias="0.05"
+        app:layout_constraintWidth_percent="0.45">
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.5"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.9"
+            app:layout_constraintWidth_percent="0.5"
+            app:srcCompat="@drawable/friend" />
+
+        <TextView
+            android:id="@+id/textView15"
+            style="@style/tv_label_size20"
+            android:layout_width="0dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:fontFamily="@font/nanumbarungothicbold"
+            android:text="직접 깐부 찾으러 가기"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.08" />
+
+        <TextView
+            android:id="@+id/textView16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="당신의 소중한 깐부를\n직접 찾아보세요 !"
+            app:layout_constraintStart_toStartOf="@+id/textView15"
+            app:layout_constraintTop_toBottomOf="@+id/textView15" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/textView24"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="어서 오세요 깐부님 !"
+        android:textSize="25sp"
+        android:textColor="#000000"
+        android:fontFamily="@font/nanumbarungothicbold"
+        app:layout_constraintBottom_toTopOf="@+id/textView10"
+        app:layout_constraintEnd_toEndOf="@+id/textView10"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textView10"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.8" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -33,8 +33,8 @@ public class Fragment_nickname extends Fragment {
                 String nickname = mBinding.etNickname.getText().toString();
                 RegisterSingleton.getInstance().setNickname(nickname);
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                Fragment_birthday fragment_birthday = new Fragment_birthday();
-                transaction.replace(R.id.register_layout, fragment_birthday);
+                Fragment_profile fragment_profile = new Fragment_profile();
+                transaction.replace(R.id.register_layout,fragment_profile);
                 transaction.commit();
             }
         });

@@ -12,12 +12,11 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.gganbuactivity.R;
 import com.example.gganbuactivity.RegisterSingleton;
-import com.example.gganbuactivity.User;
+import com.example.gganbuactivity.DTO.User;
 import com.example.gganbuactivity.databinding.FragmentEmailBinding;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -38,7 +37,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.Iterator;
-import java.util.concurrent.Executor;
 
 public class Fragment_email extends Fragment implements GoogleApiClient.OnConnectionFailedListener {
     private FragmentEmailBinding mBinding;

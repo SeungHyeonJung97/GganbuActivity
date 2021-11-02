@@ -1,37 +1,41 @@
 package com.example.gganbuactivity;
 
+import static com.bumptech.glide.load.resource.bitmap.TransformationUtils.rotateImage;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.loader.content.CursorLoader;
 
 import android.Manifest;
-import android.content.ContentResolver;
-import android.content.Context;
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.example.gganbuactivity.DTO.Post;
 import com.example.gganbuactivity.databinding.ActivityWriteBinding;
 import com.example.gganbuactivity.zipcode.NetworkStatus;
 import com.example.gganbuactivity.zipcode.WebViewActivity;
-import com.example.gganbuactivity.zipcode.ZipcodeActivity;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -44,10 +48,8 @@ import com.gun0912.tedpermission.PermissionListener;
 import com.gun0912.tedpermission.TedPermission;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class WriteActivity extends AppCompatActivity {
@@ -56,8 +58,8 @@ public class WriteActivity extends AppCompatActivity {
     private ImageView iv[];
     private final int OPEN_GALLERY = 1;
     private int image_index = 0;
-    private String image_path[] = new String[]{"", "", ""};
-    private Post post;
+    private ArrayList<String> image_path = new ArrayList<>();
+    private Post post = new Post();
     private DatabaseReference mDatabaseRef = FirebaseDatabase.getInstance().getReference();
     private static final int SEARCH_ADDRESS_ACTIVITY = 10000; // 주소 요청코드 상수 requestCode
 
@@ -75,6 +77,11 @@ public class WriteActivity extends AppCompatActivity {
         setSpinner(mBinding.spConditionMbti, R.array.mbti_array);
 
         chkListener();
+
+        Intent intent = getIntent();
+        if (intent.hasExtra("Edit")) {
+            editData();
+        }
 
         // 터치 안되게 막기
         mBinding.etLocation.setFocusable(false);
@@ -100,9 +107,7 @@ public class WriteActivity extends AppCompatActivity {
             }
         });
 
-        for (
-                int i = 0;
-                i < iv.length; i++) {
+        for (int i = 0; i < iv.length; i++) {
             iv[i].setOnClickListener(new OnClickListenerPutIndex(i) {
                 @Override
                 public void onClick(View view) {
@@ -118,9 +123,7 @@ public class WriteActivity extends AppCompatActivity {
                                 intent.setType("image/*");
                                 startActivityForResult(intent, OPEN_GALLERY);
                             } else {
-                                intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
-                                intent.addCategory(Intent.CATEGORY_OPENABLE);
-                                intent.setType("image/*");
+                                intent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                                 startActivityForResult(intent, OPEN_GALLERY);
                             }
                         }
@@ -144,6 +147,56 @@ public class WriteActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 dataUpload();
+                finish();
+            }
+        });
+    }
+
+    private void editData() {
+        String path = (RegisterSingleton.getInstance().getNickname()).toString();
+        mDatabaseRef = mDatabaseRef.child("Post").child(path);
+        mDatabaseRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Post post = snapshot.getValue(Post.class);
+
+                mBinding.etTitle.setText(post.getTitle());
+                mBinding.etLocation.setText(post.getLocation());
+                if (post.getType().equals("월세")) {
+                    mBinding.chkTypeMonth.setChecked(true);
+                    mBinding.etDeposit.setText(post.getDeposit());
+                    mBinding.tvMonthLabel.setVisibility(View.VISIBLE);
+                    mBinding.etMonth.setVisibility(View.VISIBLE);
+                    mBinding.etMonth.setText(post.getMonth());
+                } else {
+                    mBinding.chkType.setChecked(true);
+                    mBinding.etDeposit.setText(post.getDeposit());
+                }
+                for(int i=0;i<post.getUrl().size();i++){
+                    switch (i){
+                        case 0:
+                            Glide.with(WriteActivity.this)
+                                    .load(post.getUrl().get(i))
+                                    .into(mBinding.ivImage1);
+                            break;
+                        case 1:
+                            Glide.with(WriteActivity.this)
+                                    .load(post.getUrl().get(i))
+                                    .into(mBinding.ivImage2);
+                        case 2:
+                            Glide.with(WriteActivity.this)
+                                    .load(post.getUrl().get(i))
+                                    .into(mBinding.ivImage3);
+                            break;
+                    }
+                }
+                mDatabaseRef.removeEventListener(this);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Log.d("Error", error.toString());
+                mDatabaseRef.removeEventListener(this);
             }
         });
     }
@@ -174,41 +227,37 @@ public class WriteActivity extends AppCompatActivity {
     private void dataUpload() {
         FirebaseStorage storage = FirebaseStorage.getInstance();
         StorageReference storageReference = storage.getReference();
-        UploadTask uploadTask = null;
-        String image_name = "";
+        ArrayList<String> downloadPath = new ArrayList<>();
 
         /**
          * image_path에 담긴 image를 FirebaseStorage에 업로드한다.
          */
-        for (int i = 0; i < image_path.length; i++) {
-            Log.d(TAG, "" + image_path[i]);
-            if (!(image_path[i].equals(""))) {
-                String filename = image_path[i] + i + ".jpg";
-                Log.d(TAG, filename);
-                Uri file = Uri.fromFile(new File(image_path[i]));
-                StorageReference reference = storageReference.child("images/" + file.getLastPathSegment());
-                uploadTask = reference.putFile(file);
-            } else {
-                continue;
-            }
+
+        for (int i = 0; i < image_path.size(); i++) {
+            String filename = image_path.get(i);
+            Log.d(TAG, filename);
+            Uri file = Uri.fromFile(new File(image_path.get(i)));
+            StorageReference reference = storageReference.child("images/" + file.getLastPathSegment());
+            UploadTask uploadTask = reference.putFile(file);
+
             uploadTask.addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
                     e.toString();
-                    Log.d(TAG, "실패");
                 }
             }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                    Log.d(TAG, "성공");
-                    post = new Post();
                     String url = taskSnapshot.getMetadata().getPath();
+
                     storageReference.child(url).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                         @Override
                         public void onSuccess(Uri uri) {
-                            setPost(post, uri);
-                            uploadPost();
-                            finish();
+                            downloadPath.add(uri.toString());
+                            if(downloadPath.size() == image_path.size()){
+                                setPost(downloadPath);
+                                uploadPost();
+                            }
                         }
                     });
                 }
@@ -221,16 +270,17 @@ public class WriteActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 mDatabaseRef.child("Post").child("" + RegisterSingleton.getInstance().getNickname()).setValue(post);
+                mDatabaseRef.removeEventListener(this);
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
+                Log.d("WriteActivity", error.toString());
             }
         });
     }
 
-    private void setPost(Post post, Uri url) {
+    private void setPost(ArrayList<String> downloadPath) {
         post.setTitle(mBinding.etTitle.getText().toString());
         post.setLocation(mBinding.etLocation.getText().toString());
         if (mBinding.chkType.isChecked()) {
@@ -248,7 +298,7 @@ public class WriteActivity extends AppCompatActivity {
         post.setMbti(mBinding.spConditionMbti.getSelectedItem().toString());
         post.setLink(mBinding.etLink.getText().toString());
         post.setNickname(RegisterSingleton.getInstance().getNickname());
-        post.setUrl(url.toString());
+        post.setUrl(downloadPath);
     }
 
     /***
@@ -259,17 +309,32 @@ public class WriteActivity extends AppCompatActivity {
         switch (requestCode) {
             case OPEN_GALLERY:
                 if (resultCode == RESULT_OK) {
-                    try {
-                        InputStream in = getContentResolver().openInputStream(intent.getData());
-                        // Bitmap img = BitmapFactory.decodeStream(in);
-                        image_path[image_index] = getFullPathFromUri(this, intent.getData());
-                        Log.d(TAG, "" + image_path[image_index]);
-                        in.close();
 
-                        iv[image_index].setImageURI(Uri.parse(image_path[image_index]));
-                    } catch (Exception e) {
-                        e.printStackTrace();
+                    Uri selectedImage = intent.getData();
+                    Uri photoUri = intent.getData();
+                    //아래 커서 이용해서 사진의 경로 불러오기
+                    Cursor cursor = getContentResolver().query(Uri.parse(selectedImage.toString()), null, null, null, null);
+                    assert cursor != null;
+                    cursor.moveToFirst();
+                    @SuppressLint("Range") String mediaPath = cursor.getString(cursor.getColumnIndex(MediaStore.MediaColumns.DATA));
+
+
+                    switch (image_index) {
+                        case 0:
+                            mBinding.ivImage1.setImageURI(Uri.parse(mediaPath));
+                            image_path.add(mediaPath);
+                            break;
+                        case 1:
+                            mBinding.ivImage2.setImageURI(Uri.parse(mediaPath));
+                            image_path.add(mediaPath);
+                            break;
+                        case 2:
+                            mBinding.ivImage3.setImageURI(Uri.parse(mediaPath));
+                            image_path.add(mediaPath);
+                            Log.d("image_path",""+image_path.size());
+                            break;
                     }
+                    mBinding.ivImage1.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
                 }
                 break;
             case SEARCH_ADDRESS_ACTIVITY:
@@ -284,41 +349,6 @@ public class WriteActivity extends AppCompatActivity {
         }
 
         super.onActivityResult(requestCode, resultCode, intent);
-    }
-
-    public static String getFullPathFromUri(Context context, Uri fileUri) {
-        String fullPath = null;
-        final String column = "_data";
-        Cursor cursor = context.getContentResolver().query(fileUri, null, null, null, null);
-        if (cursor != null) {
-            cursor.moveToFirst();
-            String document_id = cursor.getString(0);
-            if (document_id == null) {
-                for (int i = 0; i < cursor.getColumnCount(); i++) {
-                    if (column.equalsIgnoreCase(cursor.getColumnName(i))) {
-                        fullPath = cursor.getString(i);
-                        break;
-                    }
-                }
-            } else {
-                document_id = document_id.substring(document_id.lastIndexOf(":") + 1);
-                cursor.close();
-
-                final String[] projection = {column};
-                try {
-                    cursor = context.getContentResolver().query(
-                            MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
-                            projection, MediaStore.Images.Media._ID + " = ? ", new String[]{document_id}, null);
-                    if (cursor != null) {
-                        cursor.moveToFirst();
-                        fullPath = cursor.getString(cursor.getColumnIndexOrThrow(column));
-                    }
-                } finally {
-                    if (cursor != null) cursor.close();
-                }
-            }
-        }
-        return fullPath;
     }
 
 
@@ -336,4 +366,5 @@ public class WriteActivity extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
     }
+
 }

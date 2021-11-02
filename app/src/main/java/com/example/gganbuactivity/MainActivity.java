@@ -10,6 +10,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
+import com.example.gganbuactivity.Adapter.MainAdapter;
+import com.example.gganbuactivity.DTO.Post;
 import com.example.gganbuactivity.databinding.ActivityMainBinding;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -51,8 +53,10 @@ public class MainActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 arrayList.clear();
                 for(DataSnapshot snapshot : dataSnapshot.getChildren()){
-                    Post post = snapshot.getValue(Post.class);
-                    arrayList.add(post);
+                    if(!(snapshot.getKey().equals(""+RegisterSingleton.getInstance().getEmail()))){
+                        Post post = snapshot.getValue(Post.class);
+                        arrayList.add(post);
+                    }
                 }
                 adapter.notifyDataSetChanged();
             }
@@ -65,13 +69,6 @@ public class MainActivity extends AppCompatActivity {
 
         adapter = new MainAdapter(arrayList, this);
         recyclerView.setAdapter(adapter);
-        mBinding.btnWrite.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, WriteActivity.class);
-                startActivity(intent);
-            }
-        });
 
     }
 }

@@ -15,6 +15,7 @@ import android.webkit.JavascriptInterface;
 import android.webkit.PermissionRequest;
 import android.webkit.SslErrorHandler;
 import android.webkit.WebChromeClient;
+import android.webkit.WebResourceRequest;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
@@ -52,6 +53,23 @@ public class WebViewActivity extends AppCompatActivity {
             @Override
             public void onPageFinished(WebView view, String url) {
                 webView.loadUrl("javascript:sample2_execDaumPostcode();");
+            }
+
+            @Override
+            public void onReceivedSslError(WebView view, SslErrorHandler handler, SslError error) {
+                handler.proceed();
+            }
+
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                view.loadUrl(url);
+                return true;
+            }
+        });
+        webView.setWebChromeClient(new WebChromeClient(){
+            @Override
+            public void onPermissionRequest(PermissionRequest request) {
+                request.grant(request.getResources());
             }
         });
 

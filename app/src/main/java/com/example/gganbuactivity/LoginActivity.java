@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.View;
 import android.widget.Toast;
 
@@ -58,9 +59,13 @@ public class LoginActivity extends AppCompatActivity {
                             if (current_user.getKey().equals(email) &&
                                     current_user.child("password").getValue().toString().equals(password)) {
                                 Toast.makeText(LoginActivity.this, "로그인 성공 !", Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                Intent intent = new Intent(LoginActivity.this, MenuActivity.class);
                                 RegisterSingleton.getInstance().setNickname(current_user.child("nickname").getValue().toString());
-                                RegisterSingleton.getInstance().setIdToken(current_user.hashCode());
+                                RegisterSingleton.getInstance().setEmail(current_user.child("email").getValue().toString());
+                                RegisterSingleton.getInstance().setEatingHabits(current_user.child("eatingHabits").getValue().toString());
+                                RegisterSingleton.getInstance().setLocation(current_user.child("location").getValue().toString());
+                                RegisterSingleton.getInstance().setLifePattern(current_user.child("lifePattern").getValue().toString());
+                                RegisterSingleton.getInstance().setMbti(current_user.child("mbti").getValue().toString());
                                 startActivity(intent);
                                 finish();
                                 return;
