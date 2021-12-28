@@ -19,13 +19,13 @@
 - 게시글에는 MBTI, 생활패턴, 식습관을 고려하여 비슷한 사람에게 뱃지를 달아주게 되며 이 뱃지를 통해 자신과 어떤 성향이 비슷한지 같이 생활하면 어떨지에 대해 먼저 판단해볼 수 있게 된다.
 - 마음에 드는 사람이 생겼다면 추가로 대화를 통해 전세, 혹은 월세 금액에 대한 부분을 협의할 수 있고 타협점을 찾을 수 있다.
   
-#### Languages
+#### ✅ Languages
 <p>
   <img src="https://img.shields.io/badge/Android-3DDC84?style=flat-square&logo=Android&logoColor=white"/>
   <img src="https://img.shields.io/badge/Java-007396?style=flat-square&logo=Java&logoColor=white"/>
 </p>
 
-#### Tools
+#### 🔐 Tools
 <p>
   <img src="https://img.shields.io/badge/Firebase-FFCA28?style=flat-square&logo=Firebase&logoColor=black"/>
 </p>
