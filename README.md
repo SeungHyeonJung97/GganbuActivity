@@ -1,6 +1,5 @@
 # 👦  깐부
-<p>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<p >
   <img src="./img/1.png"  width="150"> &nbsp;
   <img src="./img/2.png"  width="150"> &nbsp;
   <img src="./img/3.png"  width="150"> &nbsp;
