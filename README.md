@@ -1,9 +1,9 @@
 # 👦  깐부
 <p>
-  <img src="./img/1.png"  width="200"> &nbsp;
-  <img src="./img/2.png"  width="200"> &nbsp;
-  <img src="./img/3.png"  width="200"> &nbsp;
-  <img src="./img/4.png"  width="200">
+  <img src="./img/1.png"  width="150"> &nbsp;
+  <img src="./img/2.png"  width="150"> &nbsp;
+  <img src="./img/3.png"  width="150"> &nbsp;
+  <img src="./img/4.png"  width="150">
 </p>
 <br>
 > 자신과 잘 맞는 룸메이트를 찾을 수 있도록 도와주는 앱
