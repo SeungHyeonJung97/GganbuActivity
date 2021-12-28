@@ -1,6 +1,10 @@
 # 👦  깐부
-
-<img src="./3.png"  width="200">
+<p>
+  <img src="./img/1.png"  width="200"> &nbsp;&nbsp;
+  <img src="./img/2.png"  width="200"> &nbsp;&nbsp;
+  <img src="./img/3.png"  width="200"> &nbsp;&nbsp;
+  <img src="./img/4.png"  width="200">
+</p>
 <br>
 > 자신과 잘 맞는 룸메이트를 찾을 수 있도록 도와주는 앱
 
