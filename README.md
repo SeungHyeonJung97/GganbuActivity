@@ -1,8 +1,8 @@
 # 👦  깐부
 <p>
-  <img src="./img/1.png"  width="200"> &nbsp;&nbsp;
-  <img src="./img/2.png"  width="200"> &nbsp;&nbsp;
-  <img src="./img/3.png"  width="200"> &nbsp;&nbsp;
+  <img src="./img/1.png"  width="200"> &nbsp;
+  <img src="./img/2.png"  width="200"> &nbsp;
+  <img src="./img/3.png"  width="200"> &nbsp;
   <img src="./img/4.png"  width="200">
 </p>
 <br>
